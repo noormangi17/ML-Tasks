@@ -1,0 +1,31 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+df=pd.read_csv('dataset.csv')
+cols=df.columns
+rows=df.shape[0]
+print("Number of customers: ",rows)
+print("Number of features: ",len(cols))
+print("Numerical features: ",df.select_dtypes(include='number').columns)
+print("Categorical features: \n",df.select_dtypes(include='object').columns)
+print(df['PaymentMethod'].unique())
+print(df['Contract'].unique())
+print(df['InternetService'].unique())
+print("Missing values counts: ",df.isnull().sum())
+print("Missing values percentage: ",df.isnull().mean()*100)
+print("Duplicate rows count: ",df.duplicated().sum())
+print("Duplicate Customer IDs count: ",df['customerID'].duplicated().sum())
+temp=pd.to_numeric(df['TotalCharges'], errors='coerce')
+print("Inconsistent format value count: ",temp.isna().sum())
+print(df['PaymentMethod'].unique())
+print(df['TechSupport'].unique())
+print(df['customerID'].unique())
+# print(df['TotalCharges'].describe())
+# df['Churn'].value_counts().plot(kind="bar")
+# plt.show()
+# df['gender'].value_counts().plot(kind="bar")
+# plt.show()
+# df.boxplot(column='tenure')
+# df['MonthlyCharges'].plot(kind='hist', bins=30, edgecolor='black')  
+# df.boxplot(column='MonthlyCharges') 
+# plt.show()
