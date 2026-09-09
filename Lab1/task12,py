@@ -1,0 +1,4 @@
+import numpy as np
+identity=np.eye(6,6)
+identity[np.diag_indices(6)]=[1,2,3,4,5,6]
+print(identity)
